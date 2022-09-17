@@ -1,0 +1,39 @@
+	PROGRAM Todo List
+	
+	READ and WRITE "todo_list" with array
+	PROCEDURE runTodoList()
+		READ and WRITE "input_user" with string
+		ADD "todo_list" with "input_user"
+	
+		IF length of "todo_list" < 0
+			DISPLAY "List kosong“
+			READ and WRITE "tambahdata" with boolean
+			IF "tambahdata" aqual to true
+				runTodoList()
+		ELSE 
+			CALL displayTodoList()
+			READ and WRITE "tambahdata" with boolean
+			IF "tambahdata" aqual to true
+				runTodoList()
+
+		READ and Write "dataDelete" with string
+		IF "dataDelete" is not empty
+			PRINT delete("data")
+	END PROCEDURE 
+
+	PROCEDURE displayTodoList()
+		STORE "i" with number 0
+		WHILE length of "todo_list" > "i"
+			DISPLAY "todo_list"["i"]
+			ADD "i" by 1
+	END PROCEDURE 
+	
+	FUNCTION delete(data)
+		STORE "i" with number 0
+		WHILE length of "todo_list" > "i"
+			IF "todo_list"["i"] equal to "data"
+				DELETE "todo_list"["i"] from "todo_list"
+				RETURN "todo_list"
+			ADD "i" by 1
+		RETURN DISPLAY "Data Not Found"
+	END FUNCTION
